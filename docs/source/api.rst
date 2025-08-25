@@ -89,10 +89,37 @@ To obtain each file IDs from each dataset:
 2. Search for: ``"dataFile":{"id":``
 3. Take note of the numbers following that search term. Next to it you have "filename": followed by the name of the file.
 
-.. _obtain_id:
+.. _obtain_dataset:
 
-Obtaining File IDs
-------------------
+Downloading dataset files
+-------------------------
+
+In the case of the dataset presented here, the IDs of the two files are ``1228`` and ``1229``.
+To download each file, replace id by the desired one on the following command:
+
+``On Windows:``
+
+.. code-block:: python
+
+   id = "1229"
+   import subprocess
+   subprocess.run(f'wsl bash -c "curl -L \\"https://dmportal.biodata.pt/api/access/datafile/{id}?format=original\\" -o /mnt/c/Agri-Plast/file_{id}.csv"', shell=True, check=True)
+
+``On Linux/Mac:``
+
+.. code-block:: python
+
+   id = "1229"
+   import subprocess
+   print("TBA")
+
+
+
+
+
+
+
+
 
 
 
