@@ -155,7 +155,7 @@ A simple linear regression
    import matplotlib.pyplot as plt
    from scipy.stats import linregress
 
-   dataset = pd.read_csv("C:\\Agri-Plast\\file_1229.csv")
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1229.csv") # Change for ~/Agri-Plast/file_1229.csv on Linux/Mac
    dataset_clean = dataset.dropna(subset=["Temperature (°C)", "Humidity (%HR)"])
 
    x = dataset_clean["Temperature (°C)"]
@@ -174,22 +174,10 @@ A simple linear regression
    plt.show()
    print("y ="+str(slope)+"*x"+" + " + str(intercept))
 
+``Output:``
 
+.. image:: https://github.com/lmgoncalves94/Agri-Plast_API/blob/main/docs/source/1229_plot_reg.png?raw=true
 
+.. code-block:: console
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   y =-2.471288951824853*x + 128.68938924684124
