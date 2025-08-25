@@ -20,3 +20,4 @@ Contents
 
    usage.rst
    api
+   test.rst
