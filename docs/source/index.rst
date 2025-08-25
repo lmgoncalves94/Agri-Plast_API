@@ -21,3 +21,4 @@ Contents
 .. toctree::
 
    test.rst
+   api.rst
