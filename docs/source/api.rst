@@ -1,6 +1,10 @@
 Obtaining the data
 ==================
 
+.. note::
+
+   The following tutorial is intended to be run entirely with Python 3.
+
 .. _installing_wsl:
 
 Installing WSL
@@ -31,14 +35,35 @@ Running the following commands will create an Agri-Plast directory on C:/ and /h
 
 ``On Windows:``
 
+.. code-block:: python
+   
+   import subprocess
+   subprocess.run('wsl bash -c "mkdir /mnt/c/Agri-Plast"', shell=True, check=True)
+
+``On Linux/Mac:``
+
+.. code-block:: python
+   
+   print("TBA")
+
+.. _download_metadata:
+
+Downloading metadata file
+-------------------------
+
+In this tutorial, we will be firstly focusing on the following dataset:
+`https://dmportal.biodata.pt/dataset.xhtml?persistentId=doi:10.34636/DMPortal/AWYIXC <https://dmportal.biodata.pt/dataset.xhtml?persistentId=doi:10.34636/DMPortal/AWYIXC>`_
+
+From this link we should take note of the doi:
+
 .. code-block:: console
    
-   mkdir /mnt/c/Agri-Plast
+   doi:10.34636/DMPortal/AWYIXC
 
-``On Linux:``
 
-.. code-block:: console
-   
-   mkdir ~/Agri-Plast
+
+
+
+
 
 
