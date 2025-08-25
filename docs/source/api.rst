@@ -113,8 +113,66 @@ To download each file, replace id by the desired one on the following command:
    import subprocess
    print("TBA")
 
+.. _inspect_file:
+
+Inspecting the file
+-------------------
+
+.. code-block:: python
+
+   import pandas as pd
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1229.csv") # Change for ~/Agri-Plast/file_1229.csv on Linux/Mac
+   print(dataset)
+
+``Output:``
+
+.. code-block:: console
+
+               Date      Time  Temperature (°C)  Humidity (%HR)
+   0     27/06/2024  11:27:00              31.6            92.8
+   1     27/06/2024  11:42:00              36.6            43.7
+   2     27/06/2024  11:57:00              38.1            41.4
+   3     27/06/2024  12:12:00              38.4            39.7
+   4     27/06/2024  12:27:00              38.8            39.5
+   ...          ...       ...               ...             ...
+   7995  18/09/2024  18:12:00              26.2            60.5
+   7996  18/09/2024  18:27:00              26.0            63.2
+   7997  18/09/2024  18:42:00              25.8            65.7
+   7998  18/09/2024  18:57:00              25.5            66.5
+   7999  18/09/2024  19:12:00              25.3            67.3
+   
+   [8000 rows x 4 columns]
 
 
+.. _plot_temp_hum:
+
+A simple linear regression
+--------------------------
+
+.. code-block:: python
+
+   import pandas as pd
+   import matplotlib.pyplot as plt
+   from scipy.stats import linregress
+
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1229.csv")
+   dataset_clean = dataset.dropna(subset=["Temperature (°C)", "Humidity (%HR)"])
+
+   x = dataset_clean["Temperature (°C)"]
+   y = dataset_clean["Humidity (%HR)"]
+
+   slope, intercept, r_value, p_value, std_err = linregress(x, y)
+   regression_line = slope * x + intercept
+
+   plt.scatter(dataset_clean["Temperature (°C)"], dataset_clean["Humidity (%HR)"], alpha=0.6)
+   plt.plot(x, regression_line, color="red")
+
+   plt.xlabel("Temperature (°C)")
+   plt.ylabel("Humidity (%HR)")
+   plt.title("Temperature vs Humidity")
+   plt.savefig("C:\\Agri-Plast\\plot_reg.png")
+   plt.show()
+   print("y ="+str(slope)+"*x"+" + " + str(intercept))
 
 
 
