@@ -60,7 +60,7 @@ From this link we should take note of the doi:
    
    doi:10.34636/DMPortal/AWYIXC
 
-And replace on the the doi variable on the following command:
+And replace on the the ``doi`` variable on the following command:
 
 ``On Windows:``
 
