@@ -60,6 +60,28 @@ From this link we should take note of the doi:
    
    doi:10.34636/DMPortal/AWYIXC
 
+And replace on the the doi variable on the following command:
+
+``On Windows:``
+
+.. code-block:: python
+   
+   import subprocess
+   doi = "doi:10.34636/DMPortal/AWYIXC"
+   subprocess.run(f'wsl bash -c "curl -L \\"https://dmportal.biodata.pt/api/datasets/:persistentId/?persistentId={doi}\\" -o /mnt/c/Agri-Plast/dataset.metadata"', shell=True, check=True)
+
+``On Linux/Mac:``
+
+.. code-block:: python
+   
+   import subprocess
+   doi = "doi:10.34636/DMPortal/AWYIXC"
+   print("TBA")
+
+
+
+
+
 
 
 
