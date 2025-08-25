@@ -1,9 +1,5 @@
-Template for the Read the Docs tutorial
-=======================================
+Agri-Plast API Tutorial
+=======================
 
-This GitHub template includes fictional Python library
-with some basic Sphinx docs.
-
-Read the tutorial here:
-
-https://docs.readthedocs.io/en/stable/tutorial/
+This repository will serve as a tutorial for obtaining and analyzing data from Agri-Plast project, a collaborative research, development, and innovation project dedicated to reducing agricultural plastic waste (resíduos de plástico de uso agrícola, RPUA). The resulting ReadtheDocs document can be accessed `here <https://agri-plast-api-tutorial.readthedocs.io/en/latest/>`_
+.
