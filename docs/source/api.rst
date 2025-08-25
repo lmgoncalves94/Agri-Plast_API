@@ -30,10 +30,12 @@ Creating working directory
 Running the following commands will create an Agri-Plast directory on C:/ and /home/user/ directories on Windows or Linux, respectively:
 
 ``On Windows:``
+
 .. code-block:: console
    mkdir /mnt/c/Agri-Plast
 
 ``On Linux:``
+
 .. code-block:: console
    mkdir ~/Agri-Plast
 
