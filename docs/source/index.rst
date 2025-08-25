@@ -1,13 +1,13 @@
-Welcome to Lumache's documentation!
-===================================
+Agri-Plast API Tutorial
+=======================
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
+This tutorial will guide how to obtain and analyze data from Agri-Plast project, a collaborative research, development, and innovation project dedicated to reducing agricultural plastic waste (resíduos de plástico de uso agrícola, RPUA).
+Here, two datasets will be used:
+- First, a simple "hands-on" Temperature vs Humidity dataset from measurements in a glasshouse where Vaccinium corymbosum (blueberry) plants exposed to soil microplastics have grown.
+- A second one, more detailed where physiological changes - particularly in the photosynthetic system - of Vaccinium corymbosum plants were addressed in control conditions in comparison with plants in contaminated soil with two different MPs concentrations Low (0.001%(w/w)) and High (0.05%(w/w)).
 
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
+All Agri-Plast datasets can be accessed through the Dataverse portal at:
+`https://dmportal.biodata.pt/dataverse/agri-plast/ <https://dmportal.biodata.pt/dataverse/agri-plast>`_
 
 .. note::
 
@@ -18,6 +18,4 @@ Contents
 
 .. toctree::
 
-   usage.rst
-   api
    test.rst
