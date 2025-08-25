@@ -1,7 +1,7 @@
 Agri-Plast API Tutorial
 =======================
 
-This tutorial will guide how to obtain and analyze data from Agri-Plast project, a collaborative research, development, and innovation project dedicated to reducing agricultural plastic waste (resíduos de plástico de uso agrícola, RPUA).
+This tutorial will guide on how to obtain and analyze data from Agri-Plast project, a collaborative research, development, and innovation project dedicated to reducing agricultural plastic waste (resíduos de plástico de uso agrícola, RPUA).
 
 Here, two datasets will be used:
 
