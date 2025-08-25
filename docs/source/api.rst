@@ -32,11 +32,13 @@ Running the following commands will create an Agri-Plast directory on C:/ and /h
 ``On Windows:``
 
 .. code-block:: console
+   
    mkdir /mnt/c/Agri-Plast
 
 ``On Linux:``
 
 .. code-block:: console
+   
    mkdir ~/Agri-Plast
 
 
