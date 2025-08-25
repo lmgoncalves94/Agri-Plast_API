@@ -87,7 +87,7 @@ To obtain each file IDs from each dataset:
 
 1. Open dataset.metadata
 2. Search for: ``"dataFile":{"id":``
-3. Take note of the numbers following that search term. Next to it you have "filename": followed by the name of the file.
+3. Take note of the numbers following that search term. Next to it you have ``"filename":`` followed by the name of the file.
 
 .. _obtain_dataset:
 
