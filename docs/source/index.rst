@@ -20,5 +20,5 @@ Contents
 
 .. toctree::
 
-   test.rst
    api.rst
+   case_study.rst
