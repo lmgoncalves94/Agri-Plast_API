@@ -268,3 +268,71 @@ For High [MPs]:
    0.8724685354837892
    0.03668397290204818
 
+For all the groups, the test rejected the null hypothesis of normality (p_value < 0.05), indicating that stomatal conductance values are not normally distributed. Therefore, Kruskal-Wallis Global test should be used instead of One-Way ANOVA:
+
+.. code-block:: python
+
+   from scipy.stats import kruskal
+   import pandas as pd
+
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv")
+
+   control = dataset[dataset["Treatment"] == "Control"]["Stomatal conductance (Gsw)  (µmol m⁻² s⁻¹)"]
+   low = dataset[dataset["Treatment"] == "Low [MPs]"]["Stomatal conductance (Gsw)  (µmol m⁻² s⁻¹)"]
+   high = dataset[dataset["Treatment"] == "High [MPs]"]["Stomatal conductance (Gsw)  (µmol m⁻² s⁻¹)"]
+
+   H, p = kruskal(control, low, high)
+   print(H)
+   print(p)
+
+``Output:``
+
+.. code-block:: console
+
+   0.21184088806657542
+   0.8994962055196596
+
+The analysis revealed no statistically significant differences among the Control, Low [MPs], and High [MPs] groups (H = 0.21, p = 0.90), indicating that exposure to soil microplastics did not affect stomatal conductance under the conditions tested.
+
+.. _gas_vs_stom:
+
+Gas Exchange vs Stomatal Conductance
+------------------------------------
+
+To explore the relationship between photosynthetic activity and stomatal conductance, a simple linear regression was performed between Gas Exchange (A) and Stomatal conductance (Gsw). The resulting scatter plot shows the data points together with the fitted regression line:
+
+.. code-block:: python
+
+   import pandas as pd
+   import matplotlib.pyplot as plt
+   from scipy.stats import linregress
+
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv") # Change for ~/Agri-Plast/file_1231.csv on Linux/Mac
+   dataset_clean = dataset.dropna(subset=["Gas Exchange (A) (µmol m⁻² s⁻¹)", "Stomatal conductance (Gsw)  (µmol m⁻² s⁻¹)"])
+
+   x = dataset_clean["Gas Exchange (A) (µmol m⁻² s⁻¹)"]
+   y = dataset_clean["Stomatal conductance (Gsw)  (µmol m⁻² s⁻¹)"]
+
+   slope, intercept, r_value, p_value, std_err = linregress(x, y)
+   regression_line = slope * x + intercept
+
+   plt.scatter(dataset_clean["Gas Exchange (A) (µmol m⁻² s⁻¹)"], dataset_clean["Stomatal conductance (Gsw)  (µmol m⁻² s⁻¹)"], alpha=0.6)
+   plt.plot(x, regression_line, color="red")
+
+   plt.xlabel("Gas Exchange (A)")
+   plt.ylabel("Stomatal conductance (Gsw)")
+   plt.title("Gas Exchange vs Stomatal Conductance")
+   plt.savefig("C:\\Agri-Plast\\plot_reg_1231.png")
+   plt.show()
+   print("y ="+str(slope)+"*x"+" + " + str(intercept))
+
+``Output:``
+
+.. image:: https://github.com/lmgoncalves94/Agri-Plast_API/blob/main/docs/source/1231_gas_stom_reg.png?raw=true
+
+``Output:``
+
+.. code-block:: console
+
+   y =0.005358690270373903*x + 0.005095107097022678
+
