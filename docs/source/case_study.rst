@@ -134,7 +134,9 @@ To start, a boxplot of the Stomatal conductance by Microplastic concentration wi
 
    import pandas as pd
    import matplotlib.pyplot as plt
+   
    dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv")
+   
    order = ["Control", "Low [MPs]", "High [MPs]"]
    dataset["Treatment"] = pd.Categorical(dataset["Treatment"], categories=order, ordered=True)
    dataset.boxplot(
@@ -147,6 +149,122 @@ To start, a boxplot of the Stomatal conductance by Microplastic concentration wi
    plt.ylabel("Stomatal Conductance (Gsw)")
    plt.show()
 
+``Output:``
 
+.. image:: https://github.com/lmgoncalves94/Agri-Plast_API/blob/main/docs/source/1231_stom_boxplot.png?raw=true
 
+To address about the statistically significant difference between treatments, we need to use a Global test (followed by a Post-hoc if there are observed differences). But first, the normality of the data for each treatment must be studied to know which tests must be used. So, we first plot the distribution of the values per treatment to visually address about the data normality:
+
+.. code-block:: python
+
+   import matplotlib.pyplot as plt
+   
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv")
+   data = dataset[dataset["Treatment"] == "Control"]["Stomatal conductance (Gsw)  (µmol m⁻² s⁻¹)"]
+
+   plt.figure(figsize=(6,5))
+   plt.hist(data, bins=20)
+   plt.title("Frequency of Stomatal Conductance - Control")
+   plt.xlabel("Stomatal Conductance (Gsw)")
+   plt.ylabel("Frequency")
+   plt.show()
+
+``Output:``
+
+.. image:: https://github.com/lmgoncalves94/Agri-Plast_API/blob/main/docs/source/1231_stom_hist_control.png?raw=true
+
+.. code-block:: python
+
+   import matplotlib.pyplot as plt
+
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv")
+   data = dataset[dataset["Treatment"] == "Low [MPs]"]["Stomatal conductance (Gsw)  (µmol m⁻² s⁻¹)"]
+
+   plt.figure(figsize=(6,5))
+   plt.hist(data, bins=20)
+   plt.title("Frequency of Stomatal Conductance - Low [MPs]")
+   plt.xlabel("Stomatal Conductance (Gsw)")
+   plt.ylabel("Frequency")
+   plt.show()
+
+``Output:``
+
+.. image:: https://github.com/lmgoncalves94/Agri-Plast_API/blob/main/docs/source/1231_stom_hist_low.png?raw=true
+
+.. code-block:: python
+
+   import matplotlib.pyplot as plt
+
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv")
+   data = dataset[dataset["Treatment"] == "High [MPs]"]["Stomatal conductance (Gsw)  (µmol m⁻² s⁻¹)"]
+
+   plt.figure(figsize=(6,5))
+   plt.hist(data, bins=20)
+   plt.title("Frequency of Stomatal Conductance - High [MPs]")
+   plt.xlabel("Stomatal Conductance (Gsw)")
+   plt.ylabel("Frequency")
+   plt.show()
+
+``Output:``
+
+.. image:: https://github.com/lmgoncalves94/Agri-Plast_API/blob/main/docs/source/1231_stom_hist_high.png?raw=true
+
+The data does not appear to normally distributed. To be sure, we run the Shapiro's Test.
+
+For Control data:
+
+.. code-block:: python
+
+   from scipy.stats import shapiro
+
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv")
+   data = dataset[dataset["Treatment"] == "Control"]["Stomatal conductance (Gsw)  (µmol m⁻² s⁻¹)"]
+   stat, p_value = shapiro(data)
+   print(stat)
+   print(p_value)
+
+``Output:``
+
+.. code-block:: console
+
+   0.8156227285188757
+   0.004425037569148782
+
+For Low [MPs]:
+
+.. code-block:: python
+
+   from scipy.stats import shapiro
+
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv")
+   data = dataset[dataset["Treatment"] == "Low [MPs]"]["Stomatal conductance (Gsw)  (µmol m⁻² s⁻¹)"]
+   stat, p_value = shapiro(data)
+   print(stat)
+   print(p_value)
+
+``Output:``
+
+.. code-block:: console
+
+   0.7881585746105204
+   0.0026013957337220357
+
+For High [MPs]:
+
+.. code-block:: python
+
+   from scipy.stats import shapiro
+
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv")
+   data = dataset[dataset["Treatment"] == "High [MPs]"]["Stomatal conductance (Gsw)  (µmol m⁻² s⁻¹)"]
+   stat, p_value = shapiro(data)
+   print(stat)
+   print(p_value)
+
+``Output:``
+
+.. code-block:: console
+
+   0.8724685354837892
+   0.03668397290204818
 
