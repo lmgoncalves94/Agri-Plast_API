@@ -330,8 +330,6 @@ To explore the relationship between photosynthetic activity and stomatal conduct
 
 .. image:: https://github.com/lmgoncalves94/Agri-Plast_API/blob/main/docs/source/1231_gas_stom_reg.png?raw=true
 
-``Output:``
-
 .. code-block:: console
 
    y =0.005358690270373903*x + 0.005095107097022678
