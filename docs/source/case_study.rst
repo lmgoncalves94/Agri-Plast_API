@@ -299,7 +299,7 @@ The analysis revealed no statistically significant differences among the Control
 Gas Exchange vs Stomatal Conductance
 ------------------------------------
 
-To explore the relationship between photosynthetic activity and stomatal conductance, a simple linear regression was performed between Gas Exchange (A) and Stomatal conductance (Gsw). The resulting scatter plot shows the data points together with the fitted regression line:
+To explore the relationship between photosynthetic activity and stomatal conductance, a simple linear regression is performed between Gas Exchange (A) and Stomatal conductance (Gsw). The resulting scatter plot shows the data points together with the fitted regression line:
 
 .. code-block:: python
 
