@@ -122,7 +122,7 @@ Inspecting the file
 .. code-block:: python
 
    import pandas as pd
-   dataset = pd.read_csv("C:\\Agri-Plast\\file_1229.csv") # Change for "~/Agri-Plast/file_1229.csv" on Linux/Mac
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1229.csv") # Change to "~/Agri-Plast/file_1229.csv" on Linux/Mac
    print(dataset)
 
 ``Output:``
@@ -156,7 +156,7 @@ A simple linear regression
    import matplotlib.pyplot as plt
    from scipy.stats import linregress
 
-   dataset = pd.read_csv("C:\\Agri-Plast\\file_1229.csv") # Change for "~/Agri-Plast/file_1229.csv" on Linux/Mac
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1229.csv") # Change to "~/Agri-Plast/file_1229.csv" on Linux/Mac
    dataset_clean = dataset.dropna(subset=["Temperature (°C)", "Humidity (%HR)"])
 
    x = dataset_clean["Temperature (°C)"]
