@@ -307,7 +307,7 @@ To explore the relationship between photosynthetic activity and stomatal conduct
    import matplotlib.pyplot as plt
    from scipy.stats import linregress
 
-   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv") # # Change to "~/Agri-Plast/file_1231.csv" on Linux/Mac
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv") # Change to "~/Agri-Plast/file_1231.csv" on Linux/Mac
    dataset_clean = dataset.dropna(subset=["Gas Exchange (A) (µmol m⁻² s⁻¹)", "Stomatal conductance (Gsw)  (µmol m⁻² s⁻¹)"])
 
    x = dataset_clean["Gas Exchange (A) (µmol m⁻² s⁻¹)"]
