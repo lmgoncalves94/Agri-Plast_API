@@ -44,7 +44,8 @@ Running the following commands will create an Agri-Plast directory on C:/ and /h
 
 .. code-block:: python
    
-   print("TBA")
+   import subprocess
+   subprocess.run('mkdir ~/Agri-Plast', shell=True, check=True)
 
 .. _download_metadata:
 
@@ -76,7 +77,7 @@ And replace on the the ``doi`` variable on the following command:
    
    import subprocess
    doi = "doi:10.34636/DMPortal/AWYIXC"
-   print("TBA")
+   subprocess.run(f'curl -L "https://dmportal.biodata.pt/api/datasets/:persistentId/?persistentId={doi}" -o ~/Agri-Plast/dataset.metadata', shell=True, check=True)
 
 .. _obtain_id:
 
@@ -111,7 +112,7 @@ To download each file, replace id by the desired one on the following command:
 
    id = "1229"
    import subprocess
-   print("TBA")
+   subprocess.run(f'curl -L "https://dmportal.biodata.pt/api/access/datafile/{id}?format=original" -o ~/Agri-Plast/file_{id}.csv', shell=True, check=True)
 
 .. _inspect_file:
 
@@ -121,7 +122,7 @@ Inspecting the file
 .. code-block:: python
 
    import pandas as pd
-   dataset = pd.read_csv("C:\\Agri-Plast\\file_1229.csv") # Change for ~/Agri-Plast/file_1229.csv on Linux/Mac
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1229.csv") # Change for "~/Agri-Plast/file_1229.csv" on Linux/Mac
    print(dataset)
 
 ``Output:``
@@ -155,7 +156,7 @@ A simple linear regression
    import matplotlib.pyplot as plt
    from scipy.stats import linregress
 
-   dataset = pd.read_csv("C:\\Agri-Plast\\file_1229.csv") # Change for ~/Agri-Plast/file_1229.csv on Linux/Mac
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1229.csv") # Change for "~/Agri-Plast/file_1229.csv" on Linux/Mac
    dataset_clean = dataset.dropna(subset=["Temperature (°C)", "Humidity (%HR)"])
 
    x = dataset_clean["Temperature (°C)"]
@@ -170,7 +171,6 @@ A simple linear regression
    plt.xlabel("Temperature (°C)")
    plt.ylabel("Humidity (%HR)")
    plt.title("Temperature vs Humidity")
-   plt.savefig("C:\\Agri-Plast\\plot_reg.png")
    plt.show()
    print("y ="+str(slope)+"*x"+" + " + str(intercept))
 
