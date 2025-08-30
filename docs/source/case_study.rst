@@ -51,7 +51,7 @@ Run the following to obtain the metadata file:
 
   import subprocess
   doi = "doi:10.34636/DMPortal/Q3YLV4"
-  subprocess.run("TBA")
+  subprocess.run(f'curl -L "https://dmportal.biodata.pt/api/datasets/:persistentId/?persistentId={doi}" -o ~/Agri-Plast/dataset.metadata', shell=True, check=True)
 
 Searching for the ID following ``"dataFile":{"id":`` the following IDs are identified: ``1231`` and ``1232``. Run the following to obtain both files:
 
@@ -71,16 +71,16 @@ Searching for the ID following ``"dataFile":{"id":`` the following IDs are ident
 
    import subprocess
    id = "1231"
-   subprocess.run("TBA", shell=True, check=True)
+   subprocess.run(f'curl -L "https://dmportal.biodata.pt/api/access/datafile/{id}?format=original" -o ~/Agri-Plast/file_{id}.csv', shell=True, check=True)
    id = "1232"
-   subprocess.run("TBA", shell=True, check=True)
+   subprocess.run(f'curl -L "https://dmportal.biodata.pt/api/access/datafile/{id}?format=original" -o ~/Agri-Plast/file_{id}.csv', shell=True, check=True)
 
 We can now look at the first file:
 
 .. code-block:: python
 
    import pandas as pd
-   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv") # Change for ~/Agri-Plast/file_1231.csv on Linux/Mac
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv") # Change to "~/Agri-Plast/file_1231.csv" on Linux/Mac
    print(dataset.head(10))
 
 ``Output:``
@@ -135,7 +135,7 @@ To start, a boxplot of the Stomatal conductance by Microplastic concentration wi
    import pandas as pd
    import matplotlib.pyplot as plt
    
-   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv")
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv") # Change to "~/Agri-Plast/file_1231.csv" on Linux/Mac
    
    order = ["Control", "Low [MPs]", "High [MPs]"]
    dataset["Treatment"] = pd.Categorical(dataset["Treatment"], categories=order, ordered=True)
@@ -159,7 +159,7 @@ To address about the statistically significant difference between treatments, we
 
    import matplotlib.pyplot as plt
    
-   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv")
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv") # Change to "~/Agri-Plast/file_1231.csv" on Linux/Mac
    data = dataset[dataset["Treatment"] == "Control"]["Stomatal conductance (Gsw)  (µmol m⁻² s⁻¹)"]
 
    plt.figure(figsize=(6,5))
@@ -177,7 +177,7 @@ To address about the statistically significant difference between treatments, we
 
    import matplotlib.pyplot as plt
 
-   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv")
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv") # Change to "~/Agri-Plast/file_1231.csv" on Linux/Mac
    data = dataset[dataset["Treatment"] == "Low [MPs]"]["Stomatal conductance (Gsw)  (µmol m⁻² s⁻¹)"]
 
    plt.figure(figsize=(6,5))
@@ -195,7 +195,7 @@ To address about the statistically significant difference between treatments, we
 
    import matplotlib.pyplot as plt
 
-   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv")
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv") # Change to "~/Agri-Plast/file_1231.csv" on Linux/Mac
    data = dataset[dataset["Treatment"] == "High [MPs]"]["Stomatal conductance (Gsw)  (µmol m⁻² s⁻¹)"]
 
    plt.figure(figsize=(6,5))
@@ -217,7 +217,7 @@ For Control data:
 
    from scipy.stats import shapiro
 
-   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv")
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv") # Change to "~/Agri-Plast/file_1231.csv" on Linux/Mac
    data = dataset[dataset["Treatment"] == "Control"]["Stomatal conductance (Gsw)  (µmol m⁻² s⁻¹)"]
    stat, p_value = shapiro(data)
    print(stat)
@@ -236,7 +236,7 @@ For Low [MPs]:
 
    from scipy.stats import shapiro
 
-   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv")
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv") # Change to "~/Agri-Plast/file_1231.csv" on Linux/Mac
    data = dataset[dataset["Treatment"] == "Low [MPs]"]["Stomatal conductance (Gsw)  (µmol m⁻² s⁻¹)"]
    stat, p_value = shapiro(data)
    print(stat)
@@ -255,7 +255,7 @@ For High [MPs]:
 
    from scipy.stats import shapiro
 
-   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv")
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv") # Change to "~/Agri-Plast/file_1231.csv" on Linux/Mac
    data = dataset[dataset["Treatment"] == "High [MPs]"]["Stomatal conductance (Gsw)  (µmol m⁻² s⁻¹)"]
    stat, p_value = shapiro(data)
    print(stat)
@@ -275,7 +275,7 @@ For all the groups, the test rejected the null hypothesis of normality (p_value 
    from scipy.stats import kruskal
    import pandas as pd
 
-   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv")
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv") # Change to "~/Agri-Plast/file_1231.csv" on Linux/Mac
 
    control = dataset[dataset["Treatment"] == "Control"]["Stomatal conductance (Gsw)  (µmol m⁻² s⁻¹)"]
    low = dataset[dataset["Treatment"] == "Low [MPs]"]["Stomatal conductance (Gsw)  (µmol m⁻² s⁻¹)"]
@@ -307,7 +307,7 @@ To explore the relationship between photosynthetic activity and stomatal conduct
    import matplotlib.pyplot as plt
    from scipy.stats import linregress
 
-   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv") # Change for ~/Agri-Plast/file_1231.csv on Linux/Mac
+   dataset = pd.read_csv("C:\\Agri-Plast\\file_1231.csv") # # Change to "~/Agri-Plast/file_1231.csv" on Linux/Mac
    dataset_clean = dataset.dropna(subset=["Gas Exchange (A) (µmol m⁻² s⁻¹)", "Stomatal conductance (Gsw)  (µmol m⁻² s⁻¹)"])
 
    x = dataset_clean["Gas Exchange (A) (µmol m⁻² s⁻¹)"]
@@ -322,7 +322,6 @@ To explore the relationship between photosynthetic activity and stomatal conduct
    plt.xlabel("Gas Exchange (A)")
    plt.ylabel("Stomatal conductance (Gsw)")
    plt.title("Gas Exchange vs Stomatal Conductance")
-   plt.savefig("C:\\Agri-Plast\\plot_reg_1231.png")
    plt.show()
    print("y ="+str(slope)+"*x"+" + " + str(intercept))
 
